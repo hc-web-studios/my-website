@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 event.preventDefault(); // Prevent default browser scroll
 
                 // Calculate half the scroll amount
-                const scrollAmount = event.deltaY * 4; // Change 0.5 to desired fraction (e.g., 0.25 for quarter speed)
+                const scrollAmount = event.deltaY * 5; // Change 0.5 to desired fraction (e.g., 0.25 for quarter speed)
 
                 // Scroll the window by the calculated amount
                 window.scrollBy({
