@@ -279,15 +279,14 @@ button:hover ~ .custom-cursor,
 }
 
 .announcement-content {
-    display: inline-block; /* Essential for marquee animation */
-    white-space: nowrap; /* Keeps all content on one line */
-    animation: marquee 40s linear infinite; /* Adjust duration (e.g., 40s, 50s, 60s) for desired slower speed */
-    padding-right: 15rem; /* Ensures seamless loop by providing space before content repeats */
+    display: inline-block;
+    white-space: nowrap; /* This forces all content onto a single line */
+    animation: marquee 40s linear infinite;
+    padding-right: 15rem; /* Adds significant space at the end */
 }
 
-/* New rule: Add space between individual announcement messages */
 .announcement-content span {
-    margin-right: 5rem; /* Adjust this value (e.g., 1rem, 3rem) for more or less space */
+    margin-right: 5rem; /* Adds margin between each announcement text */
 }
 
 /* Optional: Remove margin from the very last span to avoid excessive trailing space */
