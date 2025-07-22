@@ -1,0 +1,1563 @@
+/*
+|--------------------------------------------------------------------------
+| Table of Contents
+|--------------------------------------------------------------------------
+|
+| 1. Base Styles & Global Utilities
+| 2. Announcement Bar
+| 3. Carousel Animations
+| 4. Header
+| 5. Navigation (Desktop & Mobile)
+| 6. Hero Banner Section (formerly Carousel)
+| 7. Services Section
+| 8. Why Choose Us Banner
+| 9. Portfolio Section
+| 10. Testimonials Carousel Section
+| 11. About Us Section
+| 12. Contact Section
+| 13. Footer
+| 14. Policy Page Styles
+|
+*/
+
+
+
+/* Use Permanent Marker where needed */
+.marker1 {
+  font-family: 'Permanent Marker', cursive;
+  color: #00bf63;
+}
+
+/*--------------------------------------------------------------------------
+| 1. Base Styles & Global Utilities
+|--------------------------------------------------------------------------*/
+:root {
+    --primary-dark: #191919;
+    --primary-accent: #00bf63;
+    --text-light: #f3f4f6;
+    --text-dark: #1a202c;
+    --card-bg-dark: #2c2c2c;
+    --footer-bg-dark: #00bf63;
+    --gray-700: #4a5568; /* Equivalent to Tailwind gray-700 */
+    --gray-800: #2d3748; /* Equivalent to Tailwind gray-800 */
+    --gray-900: #1a202c; /* Equivalent to Tailwind gray-900 */
+    --green-500: #22c55e; /* Equivalent to Tailwind green-500 */
+    --green-700: #047857; /* Equivalent to Tailwind green-700 */
+    --green-800: #065f46; /* Equivalent to Tailwind green-800 */
+    --white: #ffffff;
+}
+
+/* Global box-sizing for consistent layout behavior */
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    background-color: var(--primary-dark);
+    color: var(--text-light);
+    margin: 0;
+    padding: 0;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    cursor: none; /* Hide default cursor */
+}
+
+body::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for aesthetic purposes, but allow scrolling */
+}
+
+.container {
+    max-width: 80rem; /* 1280px / 16px = 80rem */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem; /* px-6 */
+    padding-right: 1.5rem; /* px-6 */
+    padding-top: 5rem; /* Added padding for main content sections */
+    padding-bottom: 5rem; /* Added padding for main content sections */
+}
+
+@media (min-width: 48rem) { /* md breakpoint (768px) */
+    .container {
+        padding-left: 2.5rem; /* md:px-10 */
+        padding-right: 2.5rem; /* md:px-10 */
+        padding-top: 7rem; /* Adjusted padding for main content sections */
+        padding-bottom: 7rem; /* Adjusted padding for main content sections */
+    }
+}
+
+@media (min-width: 64rem) { /* lg breakpoint (1024px) */
+    .container {
+        padding-left: 4rem; /* lg:px-16 */
+        padding-right: 4rem; /* lg:px-16 */
+        padding-top: 9rem; /* Adjusted padding for main content sections */
+        padding-bottom: 9rem; /* Adjusted padding for main content sections */
+    }
+}
+
+.section-spacing {
+    margin-bottom: 8rem; /* mb-32 */
+}
+
+.section-title {
+    font-size: 2.5rem; /* lg:text-5xl */
+    font-weight: 800; /* font-extrabold */
+    text-align: center;
+    margin-bottom: 5rem; /* mb-20 */
+    color: var(--primary-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.05em; /* tracking-wider */
+}
+
+@media (min-width: 64rem) { /* lg breakpoint */
+    .section-title {
+        font-size: 3.125rem; /* lg:text-5xl */
+    }
+}
+
+/* Base button styles */
+.btn {
+    font-weight: 700; /* font-bold */
+    padding: 1rem 3rem; /* py-4 px-12 */
+    border-radius: 0.75rem; /* rounded-xl */
+    box-shadow: 0 0.25rem 0.375rem rgba(0, 0, 0, 0.1); /* shadow-lg */
+    transition: all 0.3s ease-in-out;
+    text-transform: uppercase;
+    letter-spacing: 0.05em; /* tracking-wide */
+    border: 0.125rem solid transparent; /* border-2 */
+    cursor: pointer;
+    display: inline-block;
+}
+
+.btn:hover {
+    transform: translateY(-0.25rem) scale(1.02); /* hover:translate-y-[-0.25rem] hover:scale-105 */
+    box-shadow: 0 0.5rem 0.75rem rgba(0, 0, 0, 0.2); /* hover:shadow-2xl */
+}
+
+/* Primary button variant */
+.btn-primary {
+    background-color: var(--primary-dark);
+    color: var(--primary-accent);
+    border-color: var(--primary-accent);
+}
+
+.btn-primary:hover {
+    background-color: var(--gray-800);
+}
+
+/* Accent button variant */
+.btn-accent {
+    background-color: var(--primary-accent);
+    color: var(--primary-dark);
+    border-color: var(--primary-dark);
+}
+
+.btn-accent:hover {
+    background-color: var(--green-500);
+}
+
+/* Card base styles */
+.card {
+    background-color: var(--card-bg-dark);
+    padding: 2.5rem; /* p-10 */
+    border-radius: 1.5rem; /* rounded-2xl */
+    box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.2); /* shadow-xl */
+    border: 0.0625rem solid var(--gray-700); /* border border-gray-700 */
+    transform: scale(1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05); /* hover:scale-105 */
+    box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.3); /* hover:shadow-2xl */
+}
+
+.card-title {
+    font-size: 1.875rem; /* text-3xl */
+    font-weight: 700; /* font-bold */
+    margin-bottom: 1rem; /* mb-4 */
+    color: var(--text-light);
+}
+
+.card-description {
+    color: var(--gray-300); /* text-gray-300 */
+    font-size: 1.125rem; /* text-lg */
+    line-height: 1.625; /* leading-relaxed */
+}
+
+/* Input/Label styles */
+.form-label {
+    display: block;
+    font-size: 1.25rem; /* text-xl */
+    font-weight: 600; /* font-semibold */
+    color: var(--text-light);
+    margin-bottom: 0.75rem; /* mb-3 */
+}
+
+.form-input {
+    width: 100%;
+    padding: 1.25rem; /* p-5 */
+    border-radius: 0.5rem; /* rounded-lg */
+    background-color: var(--primary-dark);
+    border: 0.0625rem solid var(--gray-700);
+    color: var(--text-light);
+    outline: none;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1); /* shadow-md */
+    font-size: 1.125rem; /* text-lg */
+}
+
+.form-input:focus {
+    border-color: var(--primary-accent);
+    box-shadow: 0 0 0 0.125rem var(--primary-accent), 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1); /* focus:ring-2 focus:ring-primary-accent */
+}
+
+
+/* Custom Cursor Styles */
+.custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20px; /* Size of the cursor */
+    height: 20px; /* Size of the cursor */
+    border: 2px solid var(--primary-accent); /* Urban glow/border */
+    border-radius: 50%; /* Make it a circle */
+    pointer-events: none; /* Allow clicks to pass through */
+    transform: translate(-50%, -50%); /* Center the cursor on the mouse pointer */
+    transition: transform 0.1s ease-out, opacity 0.3s ease; /* Smooth movement and fade */
+    z-index: 9999; /* Ensure it's on top */
+    opacity: 1;
+}
+
+/* Optional: Add a subtle inner dot or different style on hover */
+.custom-cursor::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 4px;
+    height: 4px;
+    background-color: var(--primary-accent);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Optional: Enlarge cursor on interactive elements */
+a:hover ~ .custom-cursor,
+button:hover ~ .custom-cursor,
+.nav-link:hover ~ .custom-cursor,
+.btn:hover ~ .custom-cursor,
+.form-input:hover ~ .custom-cursor,
+.service-card:hover ~ .custom-cursor,
+.portfolio-card:hover ~ .custom-cursor {
+    transform: translate(-50%, -50%) scale(1.5); /* Enlarge on hover */
+    opacity: 0.7;
+}
+
+
+/*--------------------------------------------------------------------------
+| 2. Announcement Bar
+|--------------------------------------------------------------------------*/
+@keyframes marquee {
+    0% { transform: translateX(0%); } /* Start immediately visible from the left */
+    100% { transform: translateX(-50%); } /* Move half its total width for a seamless loop */
+}
+
+.announcement-bar {
+    background-color: var(--primary-accent);
+    color: var(--primary-dark);
+    text-align: center;
+    padding-top: 0.5rem; /* py-2 */
+    padding-bottom: 0.5rem; /* py-2 */
+    font-size: 0.875rem; /* text-sm */
+    font-weight: 600; /* font-semibold */
+    overflow: hidden;
+    position: relative;
+}
+
+.announcement-content {
+    display: inline-block; /* Essential for marquee animation */
+    white-space: nowrap; /* Keeps all content on one line */
+    animation: marquee 40s linear infinite; /* Adjust duration (e.g., 40s, 50s, 60s) for desired slower speed */
+    padding-right: 15rem; /* Ensures seamless loop by providing space before content repeats */
+}
+
+/* New rule: Add space between individual announcement messages */
+.announcement-content span {
+    margin-right: 5rem; /* Adjust this value (e.g., 1rem, 3rem) for more or less space */
+}
+
+/* Optional: Remove margin from the very last span to avoid excessive trailing space */
+.announcement-content span:last-child {
+    margin-right: 0;
+}
+/*--------------------------------------------------------------------------
+| 3. Carousel Animations (kept for testimonial carousel)
+|--------------------------------------------------------------------------*/
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(2rem); /* 32px */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+/*--------------------------------------------------------------------------
+| 4. Header
+|--------------------------------------------------------------------------*/
+.main-header {
+    background-color: #191919;
+    box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.137); /* shadow-xl */
+    padding-top: 1.25rem; /* py-5 */
+    padding-bottom: 1.25rem; /* py-5 */
+    padding-left: 1.5rem; /* px-6 */
+    padding-right: 1.5rem; /* px-6 */
+    position: relative;
+    z-index: 50;
+}
+
+@media (min-width: 48rem) { /* md breakpoint */
+    .main-header {
+        padding-left: 2.5rem; /* md:px-10 */
+        padding-right: 2.5rem; /* md:px-10 */
+    }
+}
+
+@media (min-width: 64rem) { /* lg breakpoint */
+    .main-header {
+        padding-left: 4rem; /* lg:px-16 */
+        padding-right: 4rem; /* lg:px-16 */
+    }
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 80rem; /* container */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.site-logo {
+    color: var(--primary-accent);
+    font-size: 1.875rem; /* text-3xl */
+    font-weight: 800; /* font-extrabold */
+    letter-spacing: 0.025em; /* tracking-wide */
+    transition: color 0.3s ease;
+    text-decoration: none; /* Ensure no underline on logo */
+}
+
+.site-logo:hover {
+    color: var(--green-500); /* hover:text-green-500 */
+}
+
+/* Desktop Navigation */
+.desktop-nav {
+    display: none; /* hidden */
+    gap: 2rem; /* space-x-8 */
+}
+
+@media (min-width: 48rem) { /* md breakpoint */
+    .desktop-nav {
+        display: flex; /* md:flex */
+    }
+}
+
+.nav-link {
+    color: var(--text-light);
+    font-weight: 600; /* font-semibold */
+    font-size: 1.125rem; /* text-lg */
+    padding: 0.5rem 1rem; /* px-4 py-2 */
+    border-radius: 0.5rem; /* rounded-lg */
+    transition: all 0.3s ease;
+    text-decoration: none; /* Remove underline from nav links */
+}
+
+.nav-link:hover {
+    background-color: var(--primary-accent);
+    color: var(--primary-dark);
+}
+
+/* Mobile Menu Button */
+.mobile-menu-button {
+    display: block; /* md:hidden */
+    padding: 0.5rem; /* p-2 */
+    color: var(--text-light);
+    border: none; /* Remove default button border */
+    background: none; /* Remove default button background */
+    border-radius: 0.375rem; /* rounded-md */
+    outline: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.mobile-menu-button:hover {
+    color: var(--primary-accent);
+}
+
+.mobile-menu-button:focus {
+    box-shadow: 0 0 0 0.125rem var(--primary-accent); /* focus:ring-2 focus:ring-primary-accent */
+}
+
+@media (min-width: 48rem) { /* md breakpoint */
+    .mobile-menu-button {
+        display: none; /* md:hidden */
+    }
+}
+
+/* Mobile Navigation */
+.mobile-nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 80vw;
+    max-width: 320px;
+    background-color: var(--card-bg-dark);
+    box-shadow: -2px 0 16px rgba(0,0,0,0.3);
+    z-index: 100;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    transform: translateX(100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.mobile-nav:not(.hidden) {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: all;
+}
+
+.hidden {
+    /* No display: none here, controlled by JS class toggle */
+}
+
+.mobile-nav .nav-link {
+    color: var(--primary-accent); /* green text */
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 0.75rem 0;
+    border-radius: 0.5rem;
+    transition: background 0.2s, color 0.2s;
+    text-align: left;
+}
+
+.mobile-nav .nav-link:hover {
+    background: var(--primary-accent);
+    color: var(--primary-dark);
+}
+
+
+/*--------------------------------------------------------------------------
+| 6. Hero Banner Section (formerly Carousel)
+|--------------------------------------------------------------------------*/
+.hero-carousel { /* Renamed to hero-banner in thought, but keeping original ID as per instruction */
+    position: relative;
+    margin-top: 1rem; /* mt-4 */
+    border-radius: 1.5rem; /* rounded-2xl */
+    box-shadow: 0 1.5rem 2.5rem rgba(0, 0, 0, 0.4); /* shadow-2xl */
+    overflow: hidden;
+    height: 30rem; /* Increased height for larger banner */
+    display: flex; /* Ensure content is centered */
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+    text-align: center; /* Center text */
+}
+
+@media (min-width: 48rem) { /* md breakpoint */
+    .hero-carousel {
+        height: 40rem; /* Increased height for larger banner */
+    }
+}
+
+@media (min-width: 64rem) { /* lg breakpoint */
+    .hero-carousel {
+        height: 50rem; /* Increased height for larger banner */
+    }
+}
+
+.carousel-slide { /* This is now the single background element */
+    position: absolute; /* Position relative to .hero-carousel */
+    inset: 0; /* Cover the entire parent */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: #3a3a3a; /* Fallback color if image fails to load */
+    opacity: 1; /* Always visible */
+    z-index: 0; /* Stays behind content */
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-slide::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: var(--primary-dark);
+    opacity: 0.05; /* Significantly reduced opacity for better image visibility */
+    z-index: 1;
+}
+
+.carousel-slide .content-wrapper {
+    position: relative;
+    z-index: 2;
+    padding: 1rem; /* p-4 */
+    max-width: 64rem; /* max-w-5xl */
+}
+
+.carousel-heading {
+    font-size: 3.125rem; /* text-5xl */
+    font-weight: 900; /* font-black */
+    line-height: 1.1; /* leading-tight */
+    text-transform: uppercase;
+    letter-spacing: 0.05em; /* tracking-widest */
+    margin-bottom: 1rem; /* mb-4 */
+    text-shadow: 0 0.5rem 0.75rem rgba(0, 0, 0, 0.5); /* drop-shadow-xl */
+}
+
+@media (min-width: 48rem) {
+    .carousel-heading {
+        font-size: 4.375rem; /* md:text-7xl */
+    }
+}
+
+@media (min-width: 64rem) {
+    .carousel-heading {
+        font-size: 5rem; /* lg:text-8xl */
+    }
+}
+
+.carousel-subheading {
+    font-size: 1.25rem; /* text-xl */
+    font-weight: 300; /* font-light */
+    margin-bottom: 2rem; /* mb-8 */
+    text-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.4); /* drop-shadow-lg */
+}
+
+@media (min-width: 48rem) {
+    .carousel-subheading {
+        font-size: 1.5rem; /* md:text-2xl */
+    }
+}
+
+@media (min-width: 64rem) {
+    .carousel-subheading {
+        font-size: 1.875rem; /* lg:text-3xl */
+    }
+}
+
+/* Removed carousel-dots and carousel-dots .dot as they are no longer used */
+
+/*--------------------------------------------------------------------------
+| 7. Services Section
+|--------------------------------------------------------------------------*/
+
+/* Center images with the .center-image class */
+.center-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.services-section {
+    margin-bottom: 8rem; /* mb-32 */
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* grid-cols-1 */
+    gap: 4rem; /* gap-16 */
+}
+
+@media (min-width: 48rem) { /* md breakpoint */
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr); /* md:grid-cols-2 */
+    }
+}
+
+@media (min-width: 64rem) { /* lg breakpoint */
+    .services-grid {
+        grid-template-columns: repeat(3, 1fr); /* lg:grid-cols-3 */
+    }
+}
+
+.service-card {
+    background-color: var(--card-bg-dark);
+    padding: 2.5rem; /* p-10 */
+    border-radius: 1.5rem; /* rounded-2xl */
+    box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.2); /* shadow-xl */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transform: scale(1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 0.0625rem solid var(--gray-700); /* border border-gray-700 */
+}
+
+.service-card:hover {
+    transform: scale(1.05); /* hover:scale-105 */
+    box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.3); /* hover:shadow-2xl */
+}
+
+.service-icon {
+    color: var(--primary-accent);
+    margin-bottom: 1.5rem; /* mb-6 */
+}
+
+/*--------------------------------------------------------------------------
+| 8. Why Choose Us Banner
+|--------------------------------------------------------------------------*/
+.why-choose-us-banner {
+    position: relative;
+    background: linear-gradient(135deg, var(--green-800), var(--primary-accent)); /* bg-gradient-to-br from-green-800 to-primary-accent */
+    padding-top: 6rem; /* py-24 */
+    padding-bottom: 6rem; /* py-24 */
+    margin-bottom: 8rem; /* mb-32 */
+    border-radius: 1.5rem; /* rounded-3xl */
+    box-shadow: 0 1.5rem 2.5rem rgba(0, 0, 0, 0.4); /* shadow-2xl */
+    overflow: hidden;
+}
+
+@media (min-width: 48rem) { /* md breakpoint */
+    .why-choose-us-banner {
+        padding-top: 9rem; /* md:py-36 */
+        padding-bottom: 9rem; /* md:py-36 */
+    }
+}
+
+@media (min-width: 64rem) { /* lg breakpoint */
+    .why-choose-us-banner {
+        padding-top: 12rem; /* lg:py-48 */
+        padding-bottom: 12rem; /* lg:py-48 */
+    }
+}
+
+.why-choose-us-banner .background-overlay {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3; /* opacity-30 */
+}
+
+.why-choose-us-banner .content-wrapper {
+    position: relative;
+    z-index: 10; /* z-10 */
+    max-width: 80rem; /* container */
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column; /* flex-col */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 4rem; /* gap-16 */
+}
+
+@media (min-width: 48rem) { /* md breakpoint */
+    .why-choose-us-banner .content-wrapper {
+        flex-direction: row; /* md:flex-row */
+        text-align: left; /* md:text-left */
+    }
+}
+
+.why-choose-us-banner .text-content {
+    width: 100%; /* md:w-1/2 */
+    padding: 1rem; /* p-4 */
+}
+
+@media (min-width: 48rem) {
+    .why-choose-us-banner .text-content {
+        width: 50%;
+    }
+}
+
+.why-choose-us-banner .banner-title {
+    font-size: 3.125rem; /* text-5xl */
+    font-weight: 900; /* font-black */
+    line-height: 1.1; /* leading-tight */
+    text-transform: uppercase;
+    letter-spacing: 0.05em; /* tracking-widest */
+    margin-bottom: 2rem; /* mb-8 */
+    color: var(--white);
+    text-shadow: 0 0.5rem 0.75rem rgba(0, 0, 0, 0.5); /* drop-shadow-lg */
+}
+
+@media (min-width: 64rem) {
+    .why-choose-us-banner .banner-title {
+        font-size: 3.75rem; /* lg:text-6xl */
+    }
+}
+
+.why-choose-us-banner .benefits-list {
+    font-size: 1.25rem; /* text-xl */
+    color: var(--white);
+    list-style: disc;
+    list-style-position: inside;
+    margin-bottom: 3rem; /* mb-12 */
+    line-height: 1.5;
+}
+
+@media (min-width: 48rem) {
+    .why-choose-us-banner .benefits-list {
+        font-size: 1.5rem; /* md:text-2xl */
+    }
+}
+
+.why-choose-us-banner .image-wrapper {
+    width: 100%; /* md:w-1/2 */
+    padding: 1rem; /* p-4 */
+}
+
+@media (min-width: 48rem) {
+    .why-choose-us-banner .image-wrapper {
+        width: 50%;
+    }
+}
+
+.why-choose-us-banner .banner-image {
+    width: 100%;
+    height: auto;
+    border-radius: 0.75rem; /* rounded-xl */
+    box-shadow: 0 1.5rem 2.5rem rgba(0, 0, 0, 0.4); /* shadow-2xl */
+    border: 0.0625rem solid var(--primary-accent); /* border border-primary-accent */
+}
+
+/*--------------------------------------------------------------------------
+| 9. Portfolio Section
+|--------------------------------------------------------------------------*/
+.portfolio-section {
+    margin-bottom: 8rem; /* mb-32 */
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* grid-cols-1 */
+    gap: 3rem; /* gap-12 */
+}
+
+@media (min-width: 48rem) { /* md breakpoint */
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr); /* md:grid-cols-2 */
+    }
+}
+
+@media (min-width: 64rem) { /* lg breakpoint */
+    .portfolio-grid {
+        grid-template-columns: repeat(3, 1fr); /* lg:grid-cols-3 */
+    }
+}
+
+.portfolio-card {
+    background-color: var(--card-bg-dark);
+    border-radius: 1.5rem; /* rounded-2xl */
+    box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.2); /* shadow-xl */
+    overflow: hidden;
+    transform: scale(1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 0.0625rem solid var(--gray-700); /* border border-gray-700 */
+}
+
+.portfolio-card:hover {
+    transform: scale(1.02); /* hover:scale-102 */
+    box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.3); /* hover:shadow-2xl */
+}
+
+.portfolio-card img {
+    width: 100%;
+    height: 14rem; /* h-56 */
+    object-fit: cover;
+}
+
+.portfolio-card .content {
+    padding: 2rem; /* p-8 */
+}
+
+.portfolio-card .card-link {
+    display: inline-block;
+    margin-top: 1.5rem; /* mt-6 */
+    color: var(--primary-accent);
+    font-weight: 600; /* font-semibold */
+    font-size: 1.125rem; /* text-lg */
+    text-decoration: none;
+    transition: text-decoration 0.3s ease;
+}
+
+.portfolio-card .card-link:hover {
+    text-decoration: underline;
+}
+
+/* Mobile specific portfolio card adjustments */
+@media (max-width: 48rem) {
+    .portfolio-card {
+        max-width: 20rem; /* Constrain width for better mobile display */
+        margin-left: auto;
+        margin-right: auto;
+        padding: 1rem;
+        border-radius: 1rem;
+    }
+    .portfolio-card img {
+        height: 8rem;
+    }
+    .portfolio-card .content {
+        padding: 1rem;
+    }
+}
+
+/*--------------------------------------------------------------------------
+| 10. Testimonials Carousel Section
+|--------------------------------------------------------------------------*/
+.testimonials-carousel-section {
+    position: relative;
+    background: linear-gradient(135deg, var(--primary-dark), var(--gray-900)); /* bg-gradient-to-br from-primary-dark to-gray-900 */
+    padding-top: 6rem; /* py-24 */
+    padding-bottom: 6rem; /* py-24 */
+    margin-bottom: 8rem; /* mb-32 */
+    border-radius: 1.5rem; /* rounded-3xl */
+    box-shadow: 0 1.5rem 2.5rem rgba(0, 0, 0, 0.4); /* shadow-2xl */
+    overflow: hidden;
+}
+
+@media (min-width: 48rem) { /* md breakpoint */
+    .testimonials-carousel-section {
+        padding-top: 9rem; /* md:py-36 */
+        padding-bottom: 9rem; /* md:py-36 */
+    }
+}
+
+@media (min-width: 64rem) { /* lg breakpoint */
+    .testimonials-carousel-section {
+        padding-top: 12rem; /* lg:py-48 */
+        padding-bottom: 12rem; /* lg:py-48 */
+    }
+}
+
+.testimonials-carousel-section .background-overlay {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3; /* opacity-30 */
+}
+
+.testimonials-carousel-section .content-wrapper {
+    position: relative;
+    z-index: 10; /* z-10 */
+    max-width: 80rem; /* container */
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: var(--white);
+}
+
+.testimonials-carousel-section .section-heading {
+    font-size: 3.125rem; /* text-5xl */
+    font-weight: 900; /* font-black */
+    line-height: 1.1; /* leading-tight */
+    text-transform: uppercase;
+    letter-spacing: 0.05em; /* tracking-widest */
+    margin-bottom: 2.5rem; /* mb-10 */
+    text-shadow: 0 0.5rem 0.75rem rgba(0, 0, 0, 0.5); /* drop-shadow-lg */
+}
+
+@media (min-width: 64rem) {
+    .testimonials-carousel-section .section-heading {
+        font-size: 3.75rem; /* lg:text-6xl */
+    }
+}
+
+.testimonial-carousel {
+    position: relative;
+    max-width: 56rem; /* max-w-4xl */
+    margin-left: auto;
+    margin-right: auto;
+    height: 16rem; /* h-64 */
+    overflow: hidden;
+}
+
+@media (min-width: 48rem) {
+    .testimonial-carousel {
+        height: 18rem; /* md:h-72 */
+    }
+}
+
+.testimonial-slide {
+    position: absolute;
+    inset: 0;
+    transition: opacity 1s ease-in-out;
+    opacity: 0;
+    z-index: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem; /* p-4 */
+}
+
+.testimonial-slide.active {
+    opacity: 1;
+    z-index: 10;
+}
+
+.testimonial-text {
+    font-size: 1.5rem; /* text-2xl */
+    font-style: italic;
+    font-weight: 300; /* font-light */
+    margin-bottom: 3rem; /* mb-12 */
+    line-height: 1.625; /* leading-relaxed */
+    text-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.4); /* drop-shadow-lg */
+}
+
+@media (min-width: 48rem) {
+    .testimonial-text {
+        font-size: 1.875rem; /* md:text-3xl */
+    }
+}
+
+.testimonial-cite {
+    display: block;
+    margin-top: 1.5rem; /* mt-6 */
+    font-style: normal; /* not-italic */
+    font-weight: 800; /* font-extrabold */
+    color: var(--primary-accent);
+    font-size: 1.5rem; /* text-2xl */
+    text-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.4); /* drop-shadow-lg */
+}
+
+.testimonial-dots {
+    position: absolute;
+    bottom: 2rem; /* bottom-8 */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.75rem; /* space-x-3 */
+    z-index: 20;
+}
+
+.testimonial-dots .dot {
+    width: 1rem; /* w-4 */
+    height: 1rem; /* h-4 */
+    background-color: var(--white);
+    border-radius: 50%; /* rounded-full */
+    cursor: pointer;
+    opacity: 0.5; /* opacity-50 */
+    transition: opacity 0.3s ease;
+}
+
+.testimonial-dots .dot.active {
+    opacity: 1;
+}
+
+/*--------------------------------------------------------------------------
+| 11. About Us Section
+|--------------------------------------------------------------------------*/
+.about-section {
+    margin-bottom: 8rem; /* mb-32 */
+    background-color: #191919;
+    padding: 3rem; /* p-12 */
+    border-radius: 1.5rem; /* rounded-3xl */
+    box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.2); /* shadow-xl */
+}
+
+@media (min-width: 48rem) {
+    .about-section {
+        padding: 4rem; /* md:p-16 */
+    }
+}
+
+.about-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem; /* gap-16 */
+}
+
+@media (min-width: 48rem) {
+    .about-content {
+        flex-direction: row;
+    }
+}
+
+.about-image-wrapper {
+    width: 100%; /* md:w-1/2 */
+}
+
+@media (min-width: 48rem) {
+    .about-image-wrapper {
+        width: 50%;
+    }
+}
+
+.about-image {
+    width: 100%;
+    height: auto;
+    border-radius: 0.75rem; /* rounded-xl */
+    box-shadow: 0 1.5rem 2.5rem rgba(0, 0, 0, 0.4); /* shadow-2xl */
+    border: 0.0625rem solid var(--gray-700); /* border border-gray-700 */
+}
+
+.about-text-content {
+    width: 100%; /* md:w-1/2 */
+    text-align: center;
+}
+
+@media (min-width: 48rem) {
+    .about-text-content {
+        width: 50%;
+        text-align: left;
+    }
+}
+
+.about-paragraph {
+    color: var(--gray-300); /* text-gray-300 */
+    font-size: 1.25rem; /* text-xl */
+    line-height: 1.625; /* leading-relaxed */
+    margin-bottom: 2rem; /* mb-8 */
+}
+
+.about-paragraph:last-child {
+    margin-bottom: 0;
+}
+
+/*--------------------------------------------------------------------------
+| 12. Contact Section
+|--------------------------------------------------------------------------*/
+.contact-section {
+    background-color: #191919;
+    padding: 3rem; /* p-12 */
+    border-radius: 1.5rem; /* rounded-3xl */
+    box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.2); /* shadow-xl */
+}
+
+@media (min-width: 48rem) {
+    .contact-section {
+        padding: 4rem; /* md:p-16 */
+    }
+}
+
+.contact-form-wrapper {
+    max-width: 48rem; /* max-w-3xl */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; /* space-y-8 */
+}
+
+/* Submit button specific styles (overrides .btn) */
+.contact-form .btn-submit {
+    width: 100%;
+    font-size: 1.5rem; /* text-2xl */
+    font-weight: 900; /* font-black */
+    padding: 1.25rem; /* py-5 */
+    border-radius: 0.75rem; /* rounded-xl */
+}
+
+
+/*--------------------------------------------------------------------------
+| 13. Footer
+|--------------------------------------------------------------------------*/
+.site-footer {
+    background-color: #191919;
+    color: var(--text-light);
+    padding-top: 4rem; /* Increased padding-top */
+    padding-bottom: 4rem; /* Increased padding-bottom */
+    text-align: center; /* Center footer text */
+}
+
+.footer-container {
+    max-width: 80rem; /* container */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem; /* px-6 */
+    padding-right: 1.5rem; /* px-6 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem; /* Space between top and bottom sections */
+}
+
+@media (min-width: 48rem) {
+    .footer-container {
+        padding-left: 2.5rem; /* md:px-10 */
+        padding-right: 2.5rem; /* md:px-10 */
+    }
+}
+
+@media (min-width: 64rem) {
+    .footer-container {
+        padding-left: 4rem; /* lg:px-16 */
+        padding-right: 4rem; /* lg:px-16 */
+    }
+}
+
+.footer-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem; /* Space between logo and text */
+    margin-bottom: 1rem; /* Space before the bottom section */
+}
+
+.footer-logo-wrapper {
+    margin-bottom: 0.5rem; /* Small space below logo */
+}
+
+.footer-logo {
+    max-width: 100px; /* Adjust logo size as needed */
+    height: auto;
+    border-radius: 0.5rem; /* Slightly rounded corners for logo */
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.footer-text {
+    color: var(--gray-400); /* text-gray-400 */
+    font-size: 1.125rem; /* text-lg */
+    line-height: 1.6; /* Improved readability */
+    max-width: 40rem; /* Limit width for readability */
+}
+
+.footer-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem; /* Space between links and copyright */
+    width: 100%;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap; /* Allow links to wrap on smaller screens */
+    justify-content: center;
+    gap: 1.5rem; /* Reduced gap for better wrapping */
+    color: var(--gray-500); /* text-gray-500 */
+    font-size: 1rem; /* Slightly smaller font for links */
+}
+
+.footer-link {
+    color: inherit; /* Inherit color from parent */
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.2s ease;
+    font-weight: 500; /* font-medium */
+    padding: 0.25rem 0.5rem; /* Add some padding for better click/tap area */
+    border-radius: 0.25rem; /* Subtle rounded corners */
+}
+
+.footer-link:hover {
+    color: var(--primary-accent); /* Change to accent color on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+.footer-separator {
+    color: var(--gray-600); /* text-gray-600 */
+    align-self: center; /* Vertically align with links */
+    padding: 0 0.5rem; /* Space around separator */
+}
+
+.footer-copyright {
+    color: var(--gray-600); /* Darker gray for copyright */
+    font-size: 0.875rem; /* Smaller font for copyright */
+    margin-top: 0.5rem; /* Space above copyright */
+}
+
+@media (max-width: 48rem) {
+    .footer-links {
+        flex-direction: column; /* Stack links vertically on very small screens */
+        gap: 0.5rem; /* Smaller gap when stacked */
+    }
+    .footer-separator {
+        display: none; /* Hide separator when links are stacked */
+    }
+}
+
+@media (min-width: 48rem) { /* Tablet and larger */
+    .footer-top {
+        flex-direction: row; /* Align logo and text horizontally */
+        justify-content: center;
+        text-align: left; /* Align text left */
+        gap: 2rem; /* Space between logo and text */
+    }
+    .footer-logo-wrapper {
+        margin-bottom: 0; /* Remove bottom margin */
+    }
+    .footer-bottom {
+        flex-direction: row; /* Align links and copyright horizontally */
+        justify-content: center;
+        gap: 2rem; /* Space between links and copyright */
+    }
+    .footer-copyright {
+        margin-top: 0; /* Remove top margin */
+    }
+}
+
+@media (min-width: 64rem) { /* Desktop */
+    .footer-top {
+        justify-content: space-between; /* Push logo and text to ends */
+        width: 100%; /* Take full width */
+    }
+    .footer-bottom {
+        justify-content: space-between; /* Push links and copyright to ends */
+        width: 100%; /* Take full width */
+    }
+}
+
+/*--------------------------------------------------------------------------
+| 14. Policy Page Styles
+|--------------------------------------------------------------------------*/
+.policy-content {
+    background-color: var(--card-bg-dark); /* Match card background */
+    padding: 3rem; /* Generous padding */
+    border-radius: 1.5rem; /* Rounded corners */
+    box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.2); /* Soft shadow */
+    color: var(--gray-300); /* Main text color for readability */
+    line-height: 1.8; /* Increased line height for readability */
+    font-size: 1.125rem; /* text-lg */
+}
+
+.policy-content h1 {
+    font-size: 2.5rem; /* Larger title */
+    font-weight: 800;
+    color: var(--primary-accent); /* Accent color for main title */
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.policy-content h3 {
+    font-size: 1.75rem; /* Subheading size */
+    font-weight: 700;
+    color: var(--text-light); /* Lighter color for subheadings */
+    margin-top: 2.5rem; /* Space above subheadings */
+    margin-bottom: 1rem;
+}
+
+.policy-content p {
+    margin-bottom: 1.25rem; /* Space between paragraphs */
+}
+
+.policy-content ul {
+    list-style: disc;
+    padding-left: 2rem; /* Indent list items */
+    margin-bottom: 1.25rem;
+}
+
+.policy-content ul li {
+    margin-bottom: 0.5rem; /* Space between list items */
+}
+
+.policy-content strong {
+    color: var(--primary-accent); /* Highlight strong text with accent color */
+    font-weight: 700;
+}
+
+/* Responsive adjustments for policy content */
+@media (max-width: 48rem) { /* Smaller screens */
+    .policy-content {
+        padding: 1.5rem;
+        font-size: 1rem;
+    }
+    .policy-content h1 {
+        font-size: 2rem;
+    }
+    .policy-content h3 {
+        font-size: 1.5rem;
+    }
+    .policy-logo {
+        max-width: 120px; /* Adjust for smaller screens */
+    }
+}
+
+
+/*--------------------------------------------------------------------------
+| Policy Page Specific Styles
+|--------------------------------------------------------------------------*/
+/* Header Back Button Styling */
+.back-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-accent); /* Use your accent color */
+    color: var(--primary-dark); /* Dark text for contrast */
+    padding: 0.75rem 1.5rem; /* py-3 px-6 */
+    border-radius: 0.75rem; /* rounded-xl */
+    font-weight: 700; /* font-bold */
+    transition: all 0.3s ease;
+    text-decoration: none; /* Remove underline */
+    box-shadow: 0 0.25rem 0.375rem rgba(0, 0, 0, 0.1); /* subtle shadow */
+}
+
+.back-button:hover {
+    background-color: var(--green-500); /* Lighter accent on hover */
+    transform: translateY(-0.125rem); /* Slight lift */
+    box-shadow: 0 0.5rem 0.75rem rgba(0, 0, 0, 0.2);
+}
+
+.back-button svg {
+    margin-right: 0.5rem; /* Space between icon and text */
+}
+
+/* Centered Logo above Policy Content */
+.policy-logo-wrapper {
+    text-align: center;
+    margin-bottom: 3rem; /* Space below the logo */
+    padding-top: 2rem; /* Padding above the logo */
+}
+
+.policy-logo {
+    max-width: 600px; /* Adjust max-width as needed for your logo */
+    height: auto;
+
+}
+
+/* Responsive adjustment for logo size */
+@media (max-width: 48rem) {
+    .policy-logo {
+        max-width: 300px;
+    }
+}
+
+
+/* Full-width image styles */
+.full-width-image-wrapper {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    overflow: hidden;
+}
+
+.full-width-image {
+    width: 100vw;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.full-width-color-split {
+    width: 100vw;
+    min-height: 130vh; /* Ensures it covers at least the viewport height */
+    background: #2c2c2c;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+}
+
+.mag {
+  margin-top: 2rem; /* or however much space is needed */
+}
+
+/* Default desktop/larger screen styles for center-text */
+.center-text {
+    width: 60%; /* Default width for larger screens */
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-flexbox;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 1rem; /* Add some padding to prevent text from touching screen edges */
+    box-sizing: border-box;
+}
+
+
+/*--------------------------------------------------------------------------
+| Image Marquee Slider Styles
+|--------------------------------------------------------------------------*/
+.image-marquee-slider {
+    width: 100%; /* Use 100% to respect parent padding */
+    overflow: hidden;
+    background: #232323;
+    margin: 0rem 0;
+    border-radius: 0rem;
+}
+
+.image-marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee-scroll 40s linear infinite;
+}
+
+.image-marquee-track img {
+    height: 400px; /* Adjust as needed for desktop */
+    width: fit-content;
+    display: block;
+    margin: 0;
+    border-radius: 0;
+    object-fit: cover;
+}
+
+@keyframes marquee-scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.image-marquee-slider:hover .image-marquee-track {
+    animation-play-state: paused;
+}
+
+
+/*--------------------------------------------------------------------------
+| Mobile Specific Styles (max-width: 48rem)
+|--------------------------------------------------------------------------*/
+@media (max-width: 48rem) {
+    /* Services Section adjustments */
+    .services-grid {
+        grid-template-columns: 1fr;
+        max-width: 22rem; /* Keep if you want a narrower grid */
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .service-card {
+        width: 100%;
+        max-width: 20rem; /* Keep if you want narrower cards */
+        margin-left: auto;
+        margin-right: auto;
+        padding: 1.25rem;
+        border-radius: 1rem;
+    }
+    .card-title {
+        font-size: 1.25rem;
+    }
+    .card-description {
+        font-size: 1rem;
+    }
+    .service-icon svg {
+        width: 48px;
+        height: 48px;
+    }
+
+    /* About and Contact Section adjustments */
+    .about-section,
+    .contact-section {
+        max-width: 30rem; /* Keep if you want narrower sections */
+        margin-left: auto;
+        margin-right: auto;
+        padding: 1.5rem;
+    }
+
+    /* Contact Form Wrapper adjustments */
+    .contact-form-wrapper {
+        max-width: 90%; /* Adjusted for better mobile fit */
+        width: 100%;
+        padding-right: 0; /* Remove unnecessary padding-right */
+    }
+
+    /* Image Marquee Slider adjustments for mobile */
+    .image-marquee-slider {
+        width: 100%; /* Use 100% to respect parent padding */
+        max-width: 100%; /* Ensure it doesn't exceed its container */
+        border-radius: 0.rem;
+        margin-left: 0; /* Remove the negative margin */
+        margin-right: 0;
+        padding: 0rem; /* Add horizontal padding to match container if needed */
+        box-sizing: border-box; /* Ensures padding is included in the width */
+    }
+    .image-marquee-track img {
+        height: 150px; /* Reduced height for better fit on small screens */
+        width: auto; /* Maintain aspect ratio */
+        max-width: none; /* Remove redundant max-width */
+        margin-right: 0rem; /* Add some spacing between images */
+    }
+    .image-marquee-track {
+        animation-duration: 30s; /* Faster scroll for fewer images on mobile */
+    }
+
+    /* Center Text adjustments for mobile */
+    .center-text {
+        width: 90%; /* Wider for mobile */
+        padding: 0 1rem; /* Add padding to prevent text from touching edges */
+    }
+    .center-text h3 { /* Make sure text size is appropriate for mobile */
+        font-size: 1.125rem; /* Adjust as needed */
+        line-height: 1.5;
+    }
+}
+
+/* Default styles for larger screens */
+.center-image img {
+    width: auto; /* Or whatever its default size is on desktop */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Removes extra space below the image */
+    margin: 0 auto; /* Centers the image if it's not full width */
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 768px) { /* Adjust 768px if your mobile breakpoint is different */
+    .center-image img {
+        width: 80%; /* Makes the image half the size */
+        height: auto; /* Maintain aspect ratio */
+    }
+}
+
+
+.honeypot-field {
+    display: none;
+}
+
+/*--------------------------------------------------------------------------
+| 15. Scroll-to-top Button
+|--------------------------------------------------------------------------*/
+.scroll-to-top-img-btn {
+    display: flex; /* Use flex to easily center content (the image) */
+    justify-content: ;eft;
+    align-items: left;
+    position: fixed;
+    bottom: 2rem; /* Adjust as needed */
+    right: 2rem; /* Adjust as needed */
+    z-index: 1000; /* Ensure it's above other content */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    opacity: 0; /* Hidden by default */
+    visibility: hidden; /* Hidden by default */
+    transform: translateY(20px); /* Start slightly off-screen */
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, transform 0.3s ease-in-out;
+    text-decoration: none; /* Remove underline for the anchor tag */
+}
+
+.scroll-to-top-img-btn.show {
+    opacity: 1; /* Fully visible when 'show' class is added */
+    visibility: visible; /* Visible when 'show' class is added */
+    transform: translateY(0); /* Slide into view */
+}
+
+.scroll-to-top-img-btn:hover {
+    background-color: var(--green-700); /* Slightly darker accent on hover */
+    transform: translateY(-5px); /* Lift slightly on hover */
+    box-shadow: 0 6px 15px rgb(0, 0, 0);
+}
+
+.scroll-up-icon {
+    width: 60px; /* Size of the image inside the button */
+    height: 60px; /* Size of the image inside the button */
+}
+
+@media (max-width: 768px) {
+  .scroll-to-top-img-btn {
+    display: none !important;
+  }
+}
