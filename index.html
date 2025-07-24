@@ -674,5 +674,51 @@
             });
         });
     </script>
+    <script>
+        // Wait for the DOM to be fully loaded before running the script
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuBtn = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            // --- Mobile Menu Toggle ---
+            if (menuBtn && mobileMenu) {
+                menuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                });
+
+                // Close mobile menu when a navigation link is clicked
+                const mobileNavLinks = mobileMenu.querySelectorAll('a'); // Select all <a> tags within the mobile menu
+                mobileNavLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        // Check if the menu is not hidden before adding the 'hidden' class
+                        // This prevents redundant operations and ensures the class is only added when needed.
+                        if (!mobileMenu.classList.contains('hidden')) {
+                            mobileMenu.classList.add('hidden');
+                        }
+                        // Optional: If you had an 'is-open' class on the menu button for animation,
+                        // you might also want to remove it here.
+                        // menuBtn.classList.remove('is-open');
+                    });
+                });
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // ... (all the script content) ...
+            console.log("Website template scripts loaded successfully!");
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            menuButton.addEventListener('click', function () {
+                mobileMenu.classList.toggle('hidden');
+            });
+        });
+    </script>
+
 </body>
 </html>

@@ -462,13 +462,13 @@ button:hover ~ .custom-cursor,
     flex-direction: column;
     gap: 2rem;
     transform: translateX(100%);
-    opacity: 0;
+    opacity: 0%;
     pointer-events: none;
     transition: transform 0.3s, opacity 0.3s;
 }
 
 .mobile-nav:not(.hidden) {
-    transform: translateX(0);
+    transform: translateX(0); /* This moves it back to its original position */
     opacity: 1;
     pointer-events: all;
 }
