@@ -1594,7 +1594,7 @@ button:hover ~ .custom-cursor,
 
 /* Styles for the email link container */
 .email-link-custom {
-    color: #2c2c2c; /* Initial color */
+    color: black; /* Initial color */
     text-decoration: none; /* No underline by default */
     display: inline-block; /* Essential for transform properties like scale and relative positioning */
     transition: transform 0.2s ease-in-out; /* Smooth transition for scale */
@@ -1615,7 +1615,7 @@ button:hover ~ .custom-cursor,
     bottom: 100%; /* Position above the link */
     left: 50%;
     transform: translateX(-50%) translateY(-10px); /* Center horizontally and add vertical offset */
-    background-color: #555; /* Dark background for the tooltip */
+    background-color: black; /* Dark background for the tooltip */
     color: white; /* White text for the tooltip */
     padding: 5px 10px;
     border-radius: 4px;
@@ -1640,7 +1640,7 @@ button:hover ~ .custom-cursor,
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #333;
+    background-color: black;
     color: white;
     padding: 15px 25px;
     border-radius: 8px;
