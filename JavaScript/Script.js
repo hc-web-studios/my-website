@@ -210,23 +210,7 @@
 });
 }
 
-    // --- JavaScript to slow down scroll speed for the whole document ---
-    document.addEventListener('wheel', function(event) {
-    // Check if the user is scrolling the main document (not an element with its own scrollbar)
-    if (event.target === document.documentElement || event.target === document.body || event.target.scrollHeight === event.target.clientHeight) {
-    event.preventDefault(); // Prevent default browser scroll
 
-    // Calculate desired scroll amount
-    const scrollAmount = event.deltaY * 4; // Multiplier (e.g., 0.5 for half speed, 4 for increased speed)
-
-    // Scroll the window by the calculated amount
-    window.scrollBy({
-    top: scrollAmount,
-    left: 0,
-    behavior: 'smooth' // 'auto' for instant, 'smooth' for animated (can feel sluggish if too slow)
-});
-}
-}, { passive: false }); // passive: false is important to allow preventDefault()
 
     console.log("Website template scripts loaded successfully!");
 });
