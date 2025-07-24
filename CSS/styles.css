@@ -28,6 +28,35 @@
   color: #00bf63;
 }
 
+
+.marker2 {
+    font-family: 'Permanent Marker', cursive;
+    color: #E44D26;
+}
+
+
+.marker3 {
+    font-family: 'Permanent Marker', cursive;
+    color: #264DE4;
+}
+
+
+.marker4 {
+    font-family: 'Permanent Marker', cursive;
+    color: #F7DF1E;
+}
+
+.marker5 {
+    font-family: 'Permanent Marker', cursive;
+    color: #9B59B6;
+}
+
+.marker6 {
+    font-family: 'Permanent Marker', cursive;
+    color: #007ACC
+
+;
+}
 /*--------------------------------------------------------------------------
 | 1. Base Styles & Global Utilities
 |--------------------------------------------------------------------------*/
