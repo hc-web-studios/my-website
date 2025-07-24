@@ -46,6 +46,163 @@
     <link rel="stylesheet" href="CSS/cursor.css">
     <link rel="icon" type="image/png" href="Images/Icons/Favicon.png">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <!-- Internal CSS for the new layout -->
+<style>
+    /* New container for the service categories */
+    .services-container-new {
+        display: flex;
+        flex-direction: column; /* Always stack vertically */
+        gap: 3rem; /* Reduced space between each service block for a tighter feel */
+        max-width: 80rem; /* Increased width to match main container */
+        margin: 0 auto; /* Center the container */
+        padding: 0 1.5rem; /* Add horizontal padding to match container */
+    }
+
+    /* Individual service category block */
+    .service-category-block {
+        background-color: var(--card-bg-dark); /* Use your existing card background */
+        padding: 3.5rem 4.5rem; /* Increased padding for a more spacious and premium feel */
+        border-radius: 1.5rem; /* Rounded corners */
+        box-shadow: 0 0.8rem 1.8rem rgba(0, 0, 0, 0.3); /* More pronounced shadow */
+        border: 1px solid var(--gray-800); /* Slightly darker, more defined border */
+        width: 100%; /* Take full width of its parent */
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .service-category-block:hover {
+        transform: translateY(-0.75rem); /* More noticeable lift on hover */
+        box-shadow: 0 1.2rem 2.5rem rgba(0, 0, 0, 0.4); /* Stronger shadow on hover */
+        border-color: var(--primary-accent); /* Highlight border on hover */
+    }
+
+    /* Header for each service category (icon + title) */
+    .service-category-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 2rem; /* Increased space below header for clearer separation */
+    }
+
+    .service-category-icon {
+        width: 90px; /* Slightly larger size for PNG icon */
+        height: 90px;
+        object-fit: contain;
+        margin-right: 2rem; /* More space between icon and title */
+        flex-shrink: 0; /* Prevent icon from shrinking */
+    }
+
+    .service-category-title {
+        font-size: 2.5rem; /* Larger font for main title */
+        font-weight: 800; /* Bolder font weight */
+        color: var(--primary-accent); /* Use accent color for main titles */
+        line-height: 1.2;
+        margin: 0; /* Reset default margin */
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle text shadow */
+    }
+
+    /* Introductory paragraph for each category */
+    .service-category-intro {
+        color: var(--gray-300);
+        font-size: 1.125rem; /* text-lg */
+        line-height: 1.7; /* Increased line height for better readability */
+        margin-bottom: 2.5rem; /* More space before detailed list */
+        flex-grow: 1; /* Allows intro text to push details down */
+    }
+
+    /* Container for detailed service lists */
+    .service-details {
+        margin-top: auto; /* Pushes this section to the bottom of the flex container */
+    }
+
+    .service-details h4 {
+        font-size: 1.35rem; /* Slightly larger font for sub-heading */
+        font-weight: 700; /* Bolder font weight */
+        color: var(--text-light);
+        margin-bottom: 1.25rem; /* More space below sub-heading */
+        border-bottom: 1px solid var(--gray-700); /* Subtle separator */
+        padding-bottom: 0.75rem; /* More padding below separator */
+    }
+
+    .service-details ul {
+        list-style: none; /* Remove default bullet points */
+        padding-left: 0; /* Remove default padding */
+        margin: 0;
+    }
+
+    .service-details ul li {
+        color: var(--gray-300);
+        font-size: 1rem; /* Base font size for list items */
+        line-height: 1.6; /* Increased line height */
+        margin-bottom: 0.75rem; /* More space between list items */
+        padding-left: 1.75rem; /* Increased indent for custom bullet */
+        position: relative;
+    }
+
+    .service-details ul li::before {
+        content: '•'; /* Custom bullet point */
+        color: var(--primary-accent); /* Accent color for bullet */
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+        top: 0;
+        font-size: 1.2em; /* Slightly larger bullet */
+    }
+
+    /* Styling for nested lists */
+    .service-details ul ul {
+        margin-top: 0.75rem; /* More space above nested list */
+        margin-bottom: 0.75rem;
+        padding-left: 1.25rem; /* Further indent nested lists */
+    }
+
+    .service-details ul ul li {
+        font-size: 0.95rem; /* Slightly smaller for nested items */
+        margin-bottom: 0.4rem; /* More space between nested list items */
+        padding-left: 1.25rem; /* Increased indent for nested custom bullet */
+    }
+
+    .service-details ul ul li::before {
+        content: '-'; /* Different bullet for nested items */
+        color: var(--gray-500);
+        font-size: 1em; /* Normal size for nested bullet */
+    }
+
+    /* Responsive adjustments for smaller screens */
+    @media (max-width: 48rem) { /* Mobile */
+        .service-category-block {
+            padding: 2rem 2rem; /* Adjusted padding for mobile */
+        }
+        .service-category-icon {
+            width: 70px;
+            height: 70px;
+            margin-right: 1.25rem;
+        }
+        .service-category-title {
+            font-size: 1.8rem;
+        }
+        .service-category-intro {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .service-details h4 {
+            font-size: 1.15rem;
+        }
+        .service-details ul li {
+            font-size: 0.9rem;
+            padding-left: 1.5rem;
+            margin-bottom: 0.6rem;
+        }
+        .service-details ul ul {
+            padding-left: 1rem;
+        }
+        .service-details ul ul li {
+            font-size: 0.85rem;
+            padding-left: 1rem;
+            margin-bottom: 0.3rem;
+        }
+    }
+</style>
 
 </head>
 <body>
@@ -102,6 +259,105 @@
         <section id="services" class="services-section container"> <div class="center-image">
                 <img data-aos="fade-up" data-aos-delay="100" src="../Images/Service.png" alt="Our Services">
             </div>
+
+
+
+            <section id="services" class="services-section container section-spacing">
+    <h2 class="section-title">Your Digital Success Starts Here</h2>
+
+    <div class="services-container-new">
+
+        <!-- Category 1: Custom Website Development & Digital Marketing -->
+        <div class="service-category-block">
+            <div class="service-category-header">
+                <!-- Replace 'path/to/your/custom-dev-icon.png' with your actual PNG image path -->
+                <img src="https://placehold.co/80x80/00bf63/191919?text=DEV" alt="Custom Development Icon" class="service-category-icon">
+                <h3 class="service-category-title">Custom Website Development & Digital Marketing</h3>
+            </div>
+            <p class="service-category-intro">
+                Dreaming of a unique online space? We build stunning, high-performing websites from scratch, perfectly tailored to your vision. Our expertise in HTML, JS, CSS, PHP, and SQL ensures your site is powerful, scalable, and ready to grow.
+            </p>
+            <div class="service-details">
+                <h4>What We Offer:</h4>
+                <ul>
+                    <li>**Bespoke Web Development:** Interactive front-ends and robust back-end systems for seamless user experience.</li>
+                    <li>**Smart Integrations:** Connect your site with essential tools like CRMs, payment, and booking apps.</li>
+                    <li>**Hosting & Domain Mastery:** Full management of hosting, DNS, and domain names.</li>
+                    <li>**Digital Marketing Power-Up:**
+                        <ul>
+                            <li>SEO Supercharge (on-page, technical, local)</li>
+                            <li>Analytics Insights (GA4 setup & custom reports)</li>
+                            <li>Catchy Meta Tags</li>
+                            <li>Content That Converts (blogs, copy, case studies)</li>
+                            <li>Effective Ad Campaigns (Google Ads, social media)</li>
+                            <li>Email & Social Savvy</li>
+                            <li>Spam Shield (reCAPTCHA v2)</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Category 2: Shopify E-commerce Solutions -->
+        <div class="service-category-block">
+            <div class="service-category-header">
+                <!-- Replace 'path/to/your/shopify-icon.png' with your actual PNG image path -->
+                <img src="https://placehold.co/80x80/00bf63/191919?text=SHOP" alt="Shopify Icon" class="service-category-icon">
+                <h3 class="service-category-title">Shopify E-commerce Solutions</h3>
+            </div>
+            <p class="service-category-intro">
+                Ready to launch or supercharge your online store? We build powerful, user-friendly Shopify e-commerce sites designed to maximize sales and provide an effortless shopping experience.
+            </p>
+            <div class="service-details">
+                <h4>How We Help You Sell:</h4>
+                <ul>
+                    <li>**Custom Shopify Stores:** Full-service design, development, product setup, and secure payment integration.</li>
+                    <li>**App Power-Ups:** Integrate essential Shopify apps for marketing, customer service, inventory, and reviews.</li>
+                    <li>**E-commerce SEO:** Optimize product pages and categories for search engines, driving organic traffic and sales.</li>
+                    <li>**Sales Analytics:** Google Analytics (GA4) for e-commerce to understand customer behavior and optimize strategy.</li>
+                    <li>**Full Digital Marketing Support:** Our comprehensive digital marketing services are tailored to amplify your Shopify store's reach and revenue.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Category 3: Website Maintenance, Repair & Optimization -->
+        <div class="service-category-block">
+            <div class="service-category-header">
+                <!-- Replace 'path/to/your/maintenance-icon.png' with your actual PNG image path -->
+                <img src="https://placehold.co/80x80/00bf63/191919?text=FIX" alt="Maintenance Icon" class="service-category-icon">
+                <h3 class="service-category-title">Website Maintenance, Repair & Optimization</h3>
+            </div>
+            <p class="service-category-intro">
+                Is your website feeling sluggish or glitchy? We give it the care it needs! Our proactive support keeps your site running smoothly, securely, and always up-to-date, protecting your investment.
+            </p>
+            <div class="service-details">
+                <h4>Our Website Care Package:</h4>
+                <ul>
+                    <li>**Fixes & Freshness:**
+                        <ul>
+                            <li>Website Repairs & Updates (bug fixes, content updates, security patches)</li>
+                            <li>Seamless Domain Transfers (smooth, secure migrations)</li>
+                        </ul>
+                    </li>
+                    <li>**Boost Your Site's Health:**
+                        <ul>
+                            <li>Full Website Audits (performance, SEO, security, usability)</li>
+                            <li>Blazing Fast Performance (page speed, CDNs)</li>
+                            <li>Ironclad Security (SSL, firewalls, security checks)</li>
+                            <li>User-Friendly for Everyone (WCAG accessibility)</li>
+                            <li>Convert More Visitors (A/B Testing & CRO)</li>
+                            <li>CRM Connection (streamlined lead management)</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+
             <div class="services-grid">
                 <div data-aos="fade-up" data-aos-delay="200" class="service-card">
                     <div class="service-icon">
@@ -209,47 +465,49 @@
                 </div>
             </div>
         </section>
-<section id="contact" class="contact-section container">
-    <div class="center-image">
-        <img src="Images/contact.png" data-aos="flip-up" data-aos-delay="200" alt="About Us">
-    </div>
-    <div class="contact-form-wrapper">
-        <form class="contact-form" action="https://submit-form.com/D4AxEFQHz" method="POST">
-            <div>
-                <label for="name" class="form-label">Name</label>
-                <input type="text" id="name" name="name" class="form-input" placeholder="Your Full Name" required>
-            </div>
-            <div>
-                <label for="email" class="form-label">Email</label>
-                <input type="email" id="email" name="email" class="form-input" placeholder="your.email@example.com" required>
-            </div>
-            <div>
-                <label for="subject" class="form-label">Subject</label>
-                <select id="subject" name="subject" class="form-input" required>
-                    <option value="">Select a Subject</option>
-                    <option value="static-website">Static Website</option>
-                    <option value="ecommerce-website">Ecommerce Website</option>
-                    <option value="website-repair-update">Website Repair and Update</option>
-                    <option value="other">Other</option>
-                </select>
-            </div>
-            <div>
-                <label for="message" class="form-label">Project Details</label>
-                <textarea id="message" name="message" rows="8" class="form-input" placeholder="Tell us about your project, goals, and vision..." required></textarea>
-            </div>
+            <section id="contact" class="contact-section container">
+                <div class="center-image">
+                    <img src="Images/contact.png" data-aos="flip-up" data-aos-delay="200" alt="About Us">
+                </div>
+                <div class="contact-form-wrapper">
+                    <form class="contact-form" action="https://submit-form.com/D4AxEFQHz" method="POST">
+                        <div>
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" id="name" name="name" class="form-input" placeholder="Your Full Name" required>
+                        </div>
+                        <div>
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" id="email" name="email" class="form-input" placeholder="your.email@example.com" required>
+                        </div>
+                        <div>
+                            <label for="subject" class="form-label">Subject</label>
+                            <select id="subject" name="subject" class="form-input" required>
+                                <option value="">Select a Subject</option>
+                                <option value="static-website">Static Website</option>
+                                <option value="ecommerce-website">Ecommerce Website</option>
+                                <option value="website-repair-update">Website Repair and Update</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="message" class="form-label">Project Details</label>
+                            <textarea id="message" name="message" rows="8" class="form-input" placeholder="Tell us about your project, goals, and vision..." required></textarea>
+                        </div>
 
-            <div style="display:none;">
-                <label for="hp_website">Please leave this field empty:</label>
-                <input type="text" id="hp_website" name="hp_website" tabindex="-1" autocomplete="off">
-            </div>
-            <div>
-                <button type="submit" class="btn btn-accent btn-submit">
-                    Submit Your Vision
-                </button>
-            </div>
-        </form>
-    </div>
-</section>
+                        <input type="hidden" name="_redirect" value="https://hcwebstudios.com/Thankyou.html">
+
+                        <div style="display:none;">
+                            <label for="hp_website">Please leave this field empty:</label>
+                            <input type="text" id="hp_website" name="hp_website" tabindex="-1" autocomplete="off">
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-accent btn-submit">
+                                Submit Your Vision
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
         <br>
         <br>
         <br>

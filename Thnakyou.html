@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You!</title>
+    <!-- IMPORTANT: Ensure the path to styles.css is correct for your project structure. -->
+    <!-- For example, if styles.css is in a 'css' folder, it might be href="css/styles.css" -->
+    <link rel="stylesheet" href="/CSS/styles.css">
+    <link rel="icon" type="image/png" href="Images/Icons/Favicon.png">
+    <!-- Google Fonts for Inter and Permanent Marker -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <style>
+        /* Specific styles for the thank you page */
+        body {
+            font-family: 'Inter', Arial, Helvetica, sans-serif; /* Explicitly set font-family as fallback */
+            background-color: var(--primary-dark, #191919); /* Fallback to hex code */
+            color: var(--text-light, #f3f4f6); /* Fallback to hex code */
+        }
+
+        .thank-you-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Full viewport height */
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--primary-dark, #191919); /* Fallback to hex code */
+            color: var(--text-light, #f3f4f6); /* Fallback to hex code */
+        }
+
+        .thank-you-card {
+            background-color: var(--card-bg-dark, #2c2c2c); /* Fallback to hex code */
+            padding: 3rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.2);
+            border: 0.0625rem solid var(--gray-700, #4a5568); /* Fallback to hex code */
+            max-width: 600px;
+            width: 100%;
+        }
+
+        /* The title is now an image, so these styles are less relevant for the h1,
+           but kept for consistency if text is ever re-introduced */
+        .thank-you-title {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-accent, #00bf63); /* Fallback to hex code */
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .thank-you-message {
+            font-size: 1.5rem;
+            color: var(--gray-300, #d1d5db); /* Fallback to a common gray hex code */
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+
+        /* Adjust button styles to match your existing .btn and .btn-accent */
+        .back-home-btn {
+            display: inline-block;
+            font-weight: 700;
+            padding: 1rem 3rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 0.25rem 0.375rem rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border: 0.125rem solid transparent;
+            cursor: pointer;
+            text-decoration: none; /* Remove underline */
+            background-color: var(--primary-accent, #00bf63); /* Fallback to hex code */
+            color: var(--primary-dark, #191919); /* Fallback to hex code */
+            border-color: var(--primary-dark, #191919); /* Fallback to hex code */
+        }
+
+        .back-home-btn:hover {
+            background-color: var(--green-500, #22c55e); /* Fallback to hex code */
+            transform: translateY(-0.25rem) scale(1.02);
+            box-shadow: 0 0.5rem 0.75rem rgba(0, 0, 0, 0.2);
+        }
+
+        /* CSS for the .center-image div and its contained img, added directly here */
+        .center-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 1.5rem; /* Added margin to separate from message */
+        }
+
+        .center-image img {
+            width: auto; /* Maintain aspect ratio */
+            height: auto; /* Maintain aspect ratio */
+            max-width: 100%; /* Ensure image doesn't overflow its container */
+            display: block; /* Removes extra space below the image */
+            margin: 0 auto; /* Centers the image if it's not full width */
+        }
+
+        /* Media Query for Mobile Devices for the image */
+        @media (max-width: 768px) { /* Adjust 768px if your mobile breakpoint is different */
+            .center-image img {
+                width: 80%; /* Makes the image half the size on smaller screens */
+                height: auto; /* Maintain aspect ratio */
+            }
+        }
+
+        /* Responsive adjustments for overall page */
+        @media (max-width: 768px) {
+            .thank-you-title { /* Still applies if h1 is used elsewhere or for fallback */
+                font-size: 2.2rem;
+            }
+            .thank-you-message {
+                font-size: 1.2rem;
+            }
+            .thank-you-card {
+                padding: 2rem;
+            }
+            .back-home-btn {
+                padding: 0.8rem 2.5rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .thank-you-title { /* Still applies if h1 is used elsewhere or for fallback */
+                font-size: 1.8rem;
+            }
+            .thank-you-message {
+                font-size: 1rem;
+            }
+            .thank-you-card {
+                padding: 1.5rem;
+            }
+            .back-home-btn {
+                width: 100%; /* Full width button on very small screens */
+                padding: 0.7rem 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="thank-you-container">
+    <div class="thank-you-card">
+        <!-- Replaced h1 with your image code -->
+        <div data-aos="flip-up" data-aos-delay="100" class="center-image">
+            <img src="Images/word.png" alt="Word Up!">
+        </div>
+        <p class="thank-you-message">
+            Your message has been received. We will get back to you shortly.
+        </p>
+        <a href="index.html" class="back-home-btn">Back to Home</a>
+    </div>
+</div>
+</body>
+</html>
