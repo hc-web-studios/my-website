@@ -1097,7 +1097,7 @@ button:hover ~ .custom-cursor,
 | 13. Footer
 |--------------------------------------------------------------------------*/
 .site-footer {
-    background-color: #191919;
+    background-color: #00bf63;
     color: var(--text-light);
     padding-top: 4rem; /* Increased padding-top */
     padding-bottom: 4rem; /* Increased padding-bottom */
@@ -1143,14 +1143,13 @@ button:hover ~ .custom-cursor,
 }
 
 .footer-logo {
-    max-width: 100px; /* Adjust logo size as needed */
+    max-width: 150px; /* Adjust logo size as needed */
     height: auto;
     border-radius: 0.5rem; /* Slightly rounded corners for logo */
-    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
 .footer-text {
-    color: var(--gray-400); /* text-gray-400 */
+    color: black; /* text-gray-400 */
     font-size: 1.125rem; /* text-lg */
     line-height: 1.6; /* Improved readability */
     max-width: 40rem; /* Limit width for readability */
@@ -1169,7 +1168,7 @@ button:hover ~ .custom-cursor,
     flex-wrap: wrap; /* Allow links to wrap on smaller screens */
     justify-content: center;
     gap: 1.5rem; /* Reduced gap for better wrapping */
-    color: var(--gray-500); /* text-gray-500 */
+    color: black; /* text-gray-500 */
     font-size: 1rem; /* Slightly smaller font for links */
 }
 
@@ -1183,18 +1182,18 @@ button:hover ~ .custom-cursor,
 }
 
 .footer-link:hover {
-    color: var(--primary-accent); /* Change to accent color on hover */
-    transform: translateY(-2px); /* Slight lift on hover */
+    color: #2c2c2c; /* Change to accent color on hover */
+    transform: translateY(-3px); /* Slight lift on hover */
 }
 
 .footer-separator {
-    color: var(--gray-600); /* text-gray-600 */
+    color: black; /* text-gray-600 */
     align-self: center; /* Vertically align with links */
     padding: 0 0.5rem; /* Space around separator */
 }
 
 .footer-copyright {
-    color: var(--gray-600); /* Darker gray for copyright */
+    color: black; /* Darker gray for copyright */
     font-size: 0.875rem; /* Smaller font for copyright */
     margin-top: 0.5rem; /* Space above copyright */
 }
