@@ -108,7 +108,7 @@ body::-webkit-scrollbar {
     padding-left: 1.5rem; /* px-6 */
     padding-right: 1.5rem; /* px-6 */
     padding-top: 5rem; /* Added padding for main content sections */
-    padding-bottom: 5rem; /* Added padding for main content sections */
+    padding-bottom: 0rem; /* Added padding for main content sections */
 }
 
 @media (min-width: 48rem) { /* md breakpoint (768px) */
@@ -116,7 +116,7 @@ body::-webkit-scrollbar {
         padding-left: 2.5rem; /* md:px-10 */
         padding-right: 2.5rem; /* md:px-10 */
         padding-top: 7rem; /* Adjusted padding for main content sections */
-        padding-bottom: 7rem; /* Adjusted padding for main content sections */
+        padding-bottom: 0rem; /* Adjusted padding for main content sections */
     }
 }
 
@@ -125,7 +125,7 @@ body::-webkit-scrollbar {
         padding-left: 4rem; /* lg:px-16 */
         padding-right: 4rem; /* lg:px-16 */
         padding-top: 9rem; /* Adjusted padding for main content sections */
-        padding-bottom: 9rem; /* Adjusted padding for main content sections */
+        padding-bottom: 0rem; /* Adjusted padding for main content sections */
     }
 }
 
@@ -628,19 +628,7 @@ button:hover ~ .custom-cursor,
     }
 }
 
-.service-card {
-    background-color: var(--card-bg-dark);
-    padding: 2.5rem; /* p-10 */
-    border-radius: 1.5rem; /* rounded-2xl */
-    box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.2); /* shadow-xl */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    transform: scale(1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 0.0625rem solid var(--gray-700); /* border border-gray-700 */
-}
+
 
 .service-card:hover {
     transform: scale(1.05); /* hover:scale-105 */
@@ -1383,6 +1371,7 @@ button:hover ~ .custom-cursor,
     height: auto;
     display: block;
     object-fit: cover;
+    overflow: hidden;
 }
 
 .full-width-color-split {
@@ -1391,6 +1380,16 @@ button:hover ~ .custom-cursor,
     background: #2c2c2c;
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
+    overflow: hidden;
+}
+
+.full-width-color-split2 {
+    width: 100vw;
+    min-height: 130vh; /* Ensures it covers at least the viewport height */
+    background: #191919;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    overflow: hidden;
 }
 
 .mag {
@@ -1415,8 +1414,10 @@ button:hover ~ .custom-cursor,
 | Image Marquee Slider Styles
 |--------------------------------------------------------------------------*/
 .image-marquee-slider {
-    width: 100%; /* Use 100% to respect parent padding */
-    overflow: hidden;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    box-sizing: border-box;
     background: #232323;
     margin: 0rem 0;
     border-radius: 0rem;
@@ -1424,8 +1425,8 @@ button:hover ~ .custom-cursor,
 
 .image-marquee-track {
     display: flex;
-    width: max-content;
-    animation: marquee-scroll 40s linear infinite;
+    min-width: 100%;
+    animation: marquee-scroll 30s linear infinite;
 }
 
 .image-marquee-track img {
@@ -1508,7 +1509,7 @@ button:hover ~ .custom-cursor,
         box-sizing: border-box; /* Ensures padding is included in the width */
     }
     .image-marquee-track img {
-        height: 150px; /* Reduced height for better fit on small screens */
+        height: 200px; /* Reduced height for better fit on small screens */
         width: auto; /* Maintain aspect ratio */
         max-width: none; /* Remove redundant max-width */
         margin-right: 0rem; /* Add some spacing between images */
