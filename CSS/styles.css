@@ -1425,7 +1425,7 @@ button:hover ~ .custom-cursor,
 .image-marquee-track {
     display: flex;
     min-width: 100%;
-    animation: marquee-scroll 30s linear infinite;
+    animation: marquee-scroll 13s linear infinite;
 }
 
 .image-marquee-track img {
@@ -1592,3 +1592,64 @@ button:hover ~ .custom-cursor,
 }
 
 
+/* Styles for the email link container */
+.email-link-custom {
+    color: #2c2c2c; /* Initial color */
+    text-decoration: none; /* No underline by default */
+    display: inline-block; /* Essential for transform properties like scale and relative positioning */
+    transition: transform 0.2s ease-in-out; /* Smooth transition for scale */
+    border-radius: 4px; /* Slightly rounded corners */
+    padding: 5px 0; /* Add some padding for better hover area */
+    cursor: pointer; /* Indicate it's clickable */
+    position: relative; /* Needed for positioning the tooltip */
+}
+
+/* Hover effect for the email link text */
+.email-link-custom:hover {
+    transform: scale(1.1); /* Gets 10% bigger on hover */
+}
+
+/* Style for the hover tooltip box */
+.hover-tooltip {
+    position: absolute;
+    bottom: 100%; /* Position above the link */
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px); /* Center horizontally and add vertical offset */
+    background-color: #555; /* Dark background for the tooltip */
+    color: white; /* White text for the tooltip */
+    padding: 5px 10px;
+    border-radius: 4px;
+    white-space: nowrap; /* Prevent text from wrapping */
+    opacity: 0; /* Hidden by default */
+    visibility: hidden; /* Hidden by default */
+    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out, visibility 0.2s ease-in-out;
+    pointer-events: none; /* Allows clicks to pass through to the link below */
+    z-index: 10; /* Ensure it appears above other content */
+}
+
+/* Show tooltip on hover over the email link */
+.email-link-custom:hover .hover-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(-5px); /* Slight upward movement on hover */
+}
+
+/* Style for the temporary message */
+.message-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #333;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    pointer-events: none; /* Allow clicks to pass through */
+}
+
+.message-box.show {
+    opacity: 1;
+}

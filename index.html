@@ -14,8 +14,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HC Web Studios</title>
     <meta name="author" content="Harrison Cross Website Studios">
-        <meta name="title" content="HC Web Studios - Innovative Web Design & Development">
-    <meta name="description" content="HC Web Studios crafts stunning, responsive, and high-performing websites. Specializing in custom web design, e-commerce, and digital solutions for businesses of all sizes.">
+        <meta name="title" content="Harrison Cross Website Studios - Innovative Web Design & Development">
+    <meta name="description" content="Harrison Cross Website Studios crafts stunning, responsive, and high-performing websites. Specializing in custom web design,  and digital solutions for businesses of all sizes.">
     <meta name="keywords" content="web design, web development, custom websites, e-commerce, digital solutions, responsive design, website development, online presence, small business websites, web studio, front-end development, back-end development, SEO friendly websites, Harrison Cross Website Studios">
     <meta name="author" content="Harrison Cross Website Studios">
     <meta name="robots" content="index, follow"> <link rel="canonical" href="https://www.hcwebstudios.com/"> <meta name="language" content="en">
@@ -472,6 +472,36 @@
         <img src="Images/brands/JS-NEW.png"  alt="Slider 3">
         <img src="Images/brands/VS.png"      alt="Slider 4">
         <img src="Images/brands/GitHub.png"  alt="Slider 5">
+        <img src="Images/brands/HTML.png"    alt="Slider 1">
+        <img src="Images/brands/CSS.png"     alt="Slider 2">
+        <img src="Images/brands/JS-NEW.png"  alt="Slider 3">
+        <img src="Images/brands/VS.png"      alt="Slider 4">
+        <img src="Images/brands/GitHub.png"  alt="Slider 5">
+        <img src="Images/brands/HTML.png"    alt="Slider 1">
+        <img src="Images/brands/CSS.png"     alt="Slider 2">
+        <img src="Images/brands/JS-NEW.png"  alt="Slider 3">
+        <img src="Images/brands/VS.png"      alt="Slider 4">
+        <img src="Images/brands/GitHub.png"  alt="Slider 5">
+        <img src="Images/brands/HTML.png"    alt="Slider 1">
+        <img src="Images/brands/CSS.png"     alt="Slider 2">
+        <img src="Images/brands/JS-NEW.png"  alt="Slider 3">
+        <img src="Images/brands/VS.png"      alt="Slider 4">
+        <img src="Images/brands/GitHub.png"  alt="Slider 5">
+        <img src="Images/brands/HTML.png"    alt="Slider 1">
+        <img src="Images/brands/CSS.png"     alt="Slider 2">
+        <img src="Images/brands/JS-NEW.png"  alt="Slider 3">
+        <img src="Images/brands/VS.png"      alt="Slider 4">
+        <img src="Images/brands/GitHub.png"  alt="Slider 5">
+        <img src="Images/brands/HTML.png"    alt="Slider 1">
+        <img src="Images/brands/CSS.png"     alt="Slider 2">
+        <img src="Images/brands/JS-NEW.png"  alt="Slider 3">
+        <img src="Images/brands/VS.png"      alt="Slider 4">
+        <img src="Images/brands/GitHub.png"  alt="Slider 5">
+        <img src="Images/brands/HTML.png"    alt="Slider 1">
+        <img src="Images/brands/CSS.png"     alt="Slider 2">
+        <img src="Images/brands/JS-NEW.png"  alt="Slider 3">
+        <img src="Images/brands/VS.png"      alt="Slider 4">
+        <img src="Images/brands/GitHub.png"  alt="Slider 5">
     </div>
 </div>
 
@@ -574,7 +604,13 @@
                 <div class="footer-logo-wrapper">
                     <img src="Images/bottom-logo.png" alt="DEVWEB Logo" class="footer-logo">
                 </div>
-                <p class="footer-text"><strong>HCWEBSTUDIOS@GMAIL.COM</strong></p>
+                <p class="footer-text">
+                    <a href="#" id="emailLink" class="email-link-custom" data-email="HCWEBSTUDIOS@GMAIL.COM">
+                        <strong>HCWEBSTUDIOS@GMAIL.COM</strong>
+                    </a>
+                </p>
+
+                <div id="messageBox" class="message-box"></div>
             </div>
             <div class="footer-bottom">
                 <div class="footer-links">
@@ -596,5 +632,46 @@
     <script>
   AOS.init();
 </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const emailLink = document.getElementById('emailLink');
+            const messageBox = document.getElementById('messageBox');
+            const originalEmail = emailLink.getAttribute('data-email');
+
+            // Function to show a temporary message
+            function showMessage(message) {
+                messageBox.textContent = message;
+                messageBox.classList.add('show');
+                setTimeout(() => {
+                    messageBox.classList.remove('show');
+                }, 1500); // Message disappears after 1.5 seconds
+            }
+
+            // Copy email to clipboard on click
+            emailLink.addEventListener('click', (event) => {
+                event.preventDefault(); // Prevent the default mailto: action
+
+                // Create a temporary textarea to hold the text for copying
+                const tempInput = document.createElement('textarea');
+                tempInput.value = originalEmail;
+                document.body.appendChild(tempInput);
+                tempInput.select(); // Select the text
+
+                try {
+                    // Execute the copy command
+                    const successful = document.execCommand('copy');
+                    if (successful) {
+                        showMessage('Email Copied!');
+                    } else {
+                        showMessage('Failed to copy email.');
+                    }
+                } catch (err) {
+                    showMessage('Copy failed: ' + err);
+                } finally {
+                    document.body.removeChild(tempInput); // Clean up the temporary element
+                }
+            });
+        });
+    </script>
 </body>
 </html>
