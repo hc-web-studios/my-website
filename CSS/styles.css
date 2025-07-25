@@ -1663,3 +1663,18 @@ button:hover ~ .custom-cursor,
 .message-box.show {
     opacity: 1;
 }
+
+
+/* In styles.css, perhaps within your .contact-form styles or in a dedicated section */
+
+/* Ensure the reCAPTCHA widget is appropriately spaced and centered */
+.g-recaptcha {
+    margin-top: 25px;    /* Add some space above the widget */
+    margin-bottom: 25px; /* Add some space below the widget */
+    display: flex;       /* Use flexbox to easily center the widget */
+    justify-content: center; /* Center the reCAPTCHA horizontally */
+    align-items: center; /* Center vertically if the parent has a defined height */
+    padding: 10px;       /* Optional: Add some padding around it */
+    /* background-color: #333; */ /* Optional: If you want a background behind it for the dark theme */
+    /* border-radius: 8px; */ /* Optional: Rounded corners for the container */
+}
