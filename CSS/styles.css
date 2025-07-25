@@ -501,7 +501,9 @@ button:hover ~ .custom-cursor,
 
 /*--------------------------------------------------------------------------
 | 6. Hero Banner Section (formerly Carousel)
-|--------------------------------------------------------------------------*/
+|/* --------------------------------------------------------------------------
+| 1. Hero Carousel
+-------------------------------------------------------------------------- */
 .hero-carousel {
     position: relative;
     width: 100vw; /* Take full viewport width */
@@ -534,9 +536,11 @@ button:hover ~ .custom-cursor,
 @media (max-width: 768px) {
     .hero-carousel {
         aspect-ratio: 9 / 16; /* Portrait aspect ratio for mobile */
+    }
+
+    .carousel-slide {
         background-image: url('../Images/hero-mobile.png'); /* Mobile specific background image */
     }
-}
 }
 
 .carousel-slide::before {
@@ -605,7 +609,8 @@ button:hover ~ .custom-cursor,
 /* Removed carousel-dots and carousel-dots .dot as they are no longer used */
 /*--------------------------------------------------------------------------
 | 7. Services Section
-|--------------------------------------------------------------------------*/
+|-------------------------------------------------------------------------- */
+
 
 /* Center images with the .center-image class */
 .center-image {
