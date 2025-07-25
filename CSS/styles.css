@@ -1945,7 +1945,7 @@ button:hover~.custom-cursor,
     }
 
     .image-marquee-track {
-        animation-duration: 2s;
+        animation-duration: 3s;
         /* Faster scroll for fewer images on mobile */
     }
 

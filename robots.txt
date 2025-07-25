@@ -1,0 +1,24 @@
+User-agent: *
+# Disallow specific pages/directories that are not meant for search engines
+Disallow: /Thankyou.html
+Disallow: /cgi-bin/
+Disallow: /*? # Disallow URLs with query parameters (often duplicate content)
+
+# Specific bots you want to block entirely from your site
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+# Declare your sitemap(s) once at the end.
+Sitemap: https://www.hcwebstudios.com/sitemap.xml
