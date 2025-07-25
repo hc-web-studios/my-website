@@ -99,7 +99,7 @@ html {
 }
 
 body {
-    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-family:  "Manrope", sans-serif;
     background-color: var(--primary-dark);
     color: var(--text-light);
     margin: 0;
@@ -2177,4 +2177,41 @@ button:hover~.custom-cursor,
     /* Optional: If you want a background behind it for the dark theme */
     /* border-radius: 8px; */
     /* Optional: Rounded corners for the container */
+}
+
+/* Base styles for the paragraph */
+.responsive-paragraph {
+  font-family: 'Roboto', sans-serif; /* Or any other Google Font you prefer */
+  line-height: 1.6; /* Good for readability */
+  margin-bottom: 1em; /* Space after the paragraph */
+}
+
+/* Desktop Styles (Default - typically applies above a certain breakpoint) */
+.responsive-paragraph {
+  font-size: 18px; /* Comfortable reading size for desktops */
+  /* You can also use rem or em for scalability relative to root font size */
+  /* font-size: 1.125rem; */
+}
+
+/* Mobile Styles (Applies below a certain breakpoint, e.g., 768px for tablets/mobiles) */
+@media (max-width: 768px) {
+  .responsive-paragraph {
+    font-size: 16px; /* Slightly smaller for mobile readability */
+    /* font-size: 1rem; */
+  }
+}
+
+/* You can add more breakpoints if needed, e.g., for extra large desktops or very small phones */
+/* Example for extra large desktops */
+@media (min-width: 1200px) {
+  .responsive-paragraph {
+    font-size: 20px;
+  }
+}
+
+/* Example for very small mobile devices */
+@media (max-width: 480px) {
+  .responsive-paragraph {
+    font-size: 15px;
+  }
 }
