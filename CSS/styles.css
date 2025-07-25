@@ -498,9 +498,8 @@ button:hover ~ .custom-cursor,
 }
 
 
-
 /*--------------------------------------------------------------------------
-| 6. Hero Banner Section (formerly Carousel)
+| 6. Hero Banner Section 
 |/* --------------------------------------------------------------------------
 | 1. Hero Carousel
 -------------------------------------------------------------------------- */
@@ -509,37 +508,60 @@ button:hover ~ .custom-cursor,
     width: 100vw; /* Take full viewport width */
     max-width: 1920px; /* Cap width at 1920px for very large screens */
     margin: 0 auto; /* Center the hero-carousel when max-width is reached */
-    aspect-ratio: 16 / 9; /* Maintain 16:9 aspect ratio (e.g., 1920x1080) */
+    aspect-ratio: 32 / 15; /* Maintain 16:9 aspect ratio (e.g., 1920x1080) */
     overflow: hidden; /* Hide any overflowing content */
     display: flex; /* Use flexbox for content centering */
     align-items: center; /* Center content vertically */
     justify-content: center; /* Center content horizontally */
     text-align: center; /* Center text within content-wrapper */
-    /* Removed margin-top, border-radius, box-shadow from previous versions
-       to achieve a full-width, clean look */
 }
 
 .carousel-slide {
     position: absolute; /* Position relative to .hero-carousel */
     inset: 0; /* Cover the entire parent */
-    background-image: url('../Images/hero-test1.png'); /* Default: Desktop Image */
-    background-size: cover; /* Ensures the image covers the entire 16:9 area */
-    background-position: center center; /* Centers the image */
-    background-repeat: no-repeat; /* Prevents image repetition */
-    background-color: #2c2c2c; /* Fallback color if image fails to load */
+    /* Remove background-image properties from here */
+    background-color: #2c2c2c; /* Fallback color if video fails to load */
     opacity: 1; /* Always visible */
     z-index: 0; /* Stays behind content */
     width: 100%; /* Ensure it spans 100% of parent's width */
     height: 100%; /* Ensure it spans 100% of parent's height */
 }
 
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1; /* Place video behind the content overlay */
+    transform: translate(-50%, -50%);
+    object-fit: cover; /* Ensures the video covers the entire container without distortion */
+    background-color: #2c2c2c; /* Fallback background for video */
+}
+
+/* Initially hide mobile video and show desktop video */
+.mobile-video {
+    display: none;
+}
+
+.desktop-video {
+    display: block;
+}
+
 @media (max-width: 768px) {
     .hero-carousel {
-        aspect-ratio: 9 / 16; /* Portrait aspect ratio for mobile */
+        aspect-ratio: 18 / 25; /* Portrait aspect ratio for mobile */
     }
 
-    .carousel-slide {
-        background-image: url('../Images/hero-mobile.png'); /* Mobile specific background image */
+    /* Hide desktop video and show mobile video on small screens */
+    .desktop-video {
+        display: none;
+    }
+
+    .mobile-video {
+        display: block;
     }
 }
 
@@ -548,7 +570,7 @@ button:hover ~ .custom-cursor,
     position: absolute;
     inset: 0;
     background-color: var(--primary-dark);
-    opacity: 0.05; /* Significantly reduced opacity for better image visibility */
+    opacity: 0.05; /* Significantly reduced opacity for better video visibility */
     z-index: 1;
 }
 
@@ -564,49 +586,7 @@ button:hover ~ .custom-cursor,
     width: 90%; /* Responsive width for content */
 }
 
-.carousel-heading {
-    font-size: 3.125rem; /* text-5xl */
-    font-weight: 900; /* font-black */
-    line-height: 1.1; /* leading-tight */
-    text-transform: uppercase;
-    letter-spacing: 0.05em; /* tracking-widest */
-    margin-bottom: 1rem; /* mb-4 */
-    text-shadow: 0 0.5rem 0.75rem rgba(0, 0, 0, 0.5); /* drop-shadow-xl */
-}
-
-@media (min-width: 48rem) {
-    .carousel-heading {
-        font-size: 4.375rem; /* md:text-7xl */
-    }
-}
-
-@media (min-width: 64rem) {
-    .carousel-heading {
-        font-size: 5rem; /* lg:text-8xl */
-    }
-}
-
-.carousel-subheading {
-    font-size: 1.25rem; /* text-xl */
-    font-weight: 300; /* font-light */
-    margin-bottom: 2rem; /* mb-8 */
-    text-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.4); /* drop-shadow-lg */
-    color: white; /* Added white color for better contrast */
-}
-
-@media (min-width: 48rem) {
-    .carousel-subheading {
-        font-size: 1.5rem; /* md:text-2xl */
-    }
-}
-
-@media (min-width: 64rem) {
-    .carousel-subheading {
-        font-size: 1.875rem; /* lg:text-3xl */
-    }
-}
-
-/* Removed carousel-dots and carousel-dots .dot as they are no longer used */
+/* ... (rest of your existing .carousel-heading and .carousel-subheading styles) ... 
 /*--------------------------------------------------------------------------
 | 7. Services Section
 |-------------------------------------------------------------------------- */
@@ -1557,6 +1537,22 @@ button:hover ~ .custom-cursor,
         height: auto; /* Maintain aspect ratio */
     }
 }
+
+.center-image2 img {
+    width: auto; /* Or whatever its default size is on desktop */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Removes extra space below the image */
+    margin: 0 auto; /* Centers the image if it's not full width */
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 768px) { /* Adjust 768px if your mobile breakpoint is different */
+    .center-image2 img {
+        width: 100%; /* Makes the image half the size */
+        height: auto; /* Maintain aspect ratio */
+    }
+}
+
 
 
 .honeypot-field {
