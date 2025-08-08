@@ -358,6 +358,13 @@
                 padding-left: 0.8rem;
             }
         }
+                .hero-video.desktop-video { display: block; }
+.hero-video.mobile-video { display: none; }
+
+@media (max-width: 768px) {
+  .hero-video.desktop-video { display: none; }
+  .hero-video.mobile-video { display: block; }
+}
     </style>
 
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
