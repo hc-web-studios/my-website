@@ -25,7 +25,7 @@
 /* Use Permanent Marker where needed */
 .marker1 {
     font-family: 'Permanent Marker', cursive;
-    color: #00bf63;
+    color: #ffa500;
 }
 
 
@@ -61,22 +61,22 @@
 |--------------------------------------------------------------------------*/
 :root {
     --primary-dark: #191919;
-    --primary-accent: #00bf63;
+    --primary-accent: #ffa500;
     --text-light: #f3f4f6;
     --text-dark: #1a202c;
     --card-bg-dark: #2c2c2c;
-    --footer-bg-dark: #00bf63;
+    --footer-bg-dark: #ffa500;
     --gray-700: #4a5568;
     /* Equivalent to Tailwind gray-700 */
     --gray-800: #2d3748;
     /* Equivalent to Tailwind gray-800 */
     --gray-900: #1a202c;
     /* Equivalent to Tailwind gray-900 */
-    --green-500: #22c55e;
+    --green-500: #ff2500;
     /* Equivalent to Tailwind green-500 */
-    --green-700: #047857;
+    --green-700: #ffb84d;
     /* Equivalent to Tailwind green-700 */
-    --green-800: #065f46;
+    --green-800: #ff9800;
     /* Equivalent to Tailwind green-800 */
     --white: #ffffff;
 }
@@ -1405,7 +1405,7 @@ button:hover~.custom-cursor,
 | 13. Footer
 |--------------------------------------------------------------------------*/
 .site-footer {
-    background-color: #00bf63;
+    background-color: #ffa500;
     color: var(--text-light);
     padding-top: 4rem;
     /* Increased padding-top */
