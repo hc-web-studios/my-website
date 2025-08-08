@@ -21,4 +21,4 @@ User-agent: PetalBot
 Disallow: /
 
 # Declare your sitemap(s) once at the end.
-Sitemap: https://www.hcwebstudios.com/sitemap.xml
+Sitemap: https://www.websiteforge.au/sitemap.xml
